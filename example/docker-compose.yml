@@ -1,0 +1,26 @@
+services:
+  app:
+    container_name: training-spring-container-v2
+    build: .
+    ports:
+      - "9000:7575"
+#    volumes:
+#      - ./:/app
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    env_file:
+      - ./.env
+#    depends_on:
+#      - postgres_app
+  postgres_app:
+    image: postgres
+    restart: always
+#    volumes:
+#      - postgres-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+
+#volumes:
+#  postgres-db:
+
